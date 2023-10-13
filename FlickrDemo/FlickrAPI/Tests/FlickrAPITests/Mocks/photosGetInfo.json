@@ -1,0 +1,164 @@
+{
+  "photo" : {
+    "description" : {
+      "_content" : "Chimney, Grassington Lead Works (defunct), Grassington Moor, Oct. 2023"
+    },
+    "location" : {
+      "county" : {
+        "_content" : "North Yorkshire"
+      },
+      "locality" : {
+        "_content" : "Craven District"
+      },
+      "longitude" : "-1.955748",
+      "region" : {
+        "_content" : "England"
+      },
+      "country" : {
+        "_content" : "UK"
+      },
+      "context" : "0",
+      "neighbourhood" : {
+        "_content" : "Hebden"
+      },
+      "latitude" : "54.095581",
+      "accuracy" : "16"
+    },
+    "server" : "65535",
+    "secret" : "da5fa2c4fe",
+    "rotation" : 0,
+    "title" : {
+      "_content" : "Chimney, Grassington Lead Works (defunct), Grassington Moor, Oct. 2023"
+    },
+    "tags" : {
+      "tag" : [
+        {
+          "raw" : "Chimneys, Lead works",
+          "id" : "47743378-53254719161-541642380",
+          "author" : "47766432@N03",
+          "authorname" : "Great Uncle David",
+          "machine_tag" : 0,
+          "_content" : "chimneysleadworks"
+        },
+        {
+          "raw" : "Grassington Moor",
+          "id" : "47743378-53254719161-2813085",
+          "author" : "47766432@N03",
+          "authorname" : "Great Uncle David",
+          "machine_tag" : 0,
+          "_content" : "grassingtonmoor"
+        },
+        {
+          "raw" : "Grassington Lead Works",
+          "id" : "47743378-53254719161-541642385",
+          "author" : "47766432@N03",
+          "authorname" : "Great Uncle David",
+          "machine_tag" : 0,
+          "_content" : "grassingtonleadworks"
+        },
+        {
+          "raw" : "Yorkshire Dales",
+          "id" : "47743378-53254719161-132380",
+          "author" : "47766432@N03",
+          "authorname" : "Great Uncle David",
+          "machine_tag" : 0,
+          "_content" : "yorkshiredales"
+        },
+        {
+          "raw" : "North Yorkshire",
+          "id" : "47743378-53254719161-68455",
+          "author" : "47766432@N03",
+          "authorname" : "Great Uncle David",
+          "machine_tag" : 0,
+          "_content" : "northyorkshire"
+        },
+        {
+          "raw" : "England",
+          "id" : "47743378-53254719161-279",
+          "author" : "47766432@N03",
+          "authorname" : "Great Uncle David",
+          "machine_tag" : 0,
+          "_content" : "england"
+        }
+      ]
+    },
+    "owner" : {
+      "location" : null,
+      "nsid" : "47766432@N03",
+      "path_alias" : "dakerry",
+      "gift" : {
+        "new_flow" : true,
+        "gift_eligible" : true,
+        "eligible_durations" : [
+          "year",
+          "month",
+          "week"
+        ]
+      },
+      "iconfarm" : 0,
+      "username" : "Great Uncle David",
+      "realname" : "",
+      "iconserver" : "0"
+    },
+    "editability" : {
+      "canaddmeta" : 0,
+      "cancomment" : 0
+    },
+    "publiceditability" : {
+      "canaddmeta" : 0,
+      "cancomment" : 1
+    },
+    "safety_level" : "0",
+    "visibility" : {
+      "ispublic" : 1,
+      "isfriend" : 0,
+      "isfamily" : 0
+    },
+    "views" : "0",
+    "media" : "photo",
+    "farm" : 66,
+    "id" : "53254719161",
+    "dates" : {
+      "lastupdate" : "1697192035",
+      "posted" : "1697191872",
+      "takengranularity" : 0,
+      "taken" : "2023-10-12 10:04:00",
+      "takenunknown" : "0"
+    },
+    "usage" : {
+      "canprint" : 0,
+      "canblog" : 0,
+      "canshare" : 1,
+      "candownload" : 0
+    },
+    "geoperms" : {
+      "ispublic" : 1,
+      "isfamily" : 0,
+      "iscontact" : 0,
+      "isfriend" : 0
+    },
+    "urls" : {
+      "url" : [
+        {
+          "type" : "photopage",
+          "_content" : "https:\/\/www.flickr.com\/photos\/dakerry\/53254719161\/"
+        }
+      ]
+    },
+    "comments" : {
+      "_content" : "0"
+    },
+    "notes" : {
+      "note" : [
+
+      ]
+    },
+    "license" : "0",
+    "dateuploaded" : "1697191872",
+    "people" : {
+      "haspeople" : 0
+    },
+    "isfavorite" : 0
+  },
+  "stat" : "ok"
+}

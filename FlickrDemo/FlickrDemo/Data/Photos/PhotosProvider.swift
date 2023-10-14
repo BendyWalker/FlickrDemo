@@ -3,10 +3,16 @@ import Foundation
 
 struct PhotosProvider: PhotosProviding {
     func search(_ query: String) async throws -> [Photo] {
-        var photos = [FlickrAPI.Photo]()
-        for result in try await FlickrAPI.Photos.search(query) {
-            try photos.append(await FlickrAPI.Photos.getInfo(forId: result.id))
+        try await withThrowingTaskGroup(of: FlickrAPI.Photo.self) { group in
+            let results = try await FlickrAPI.Photos.search(query)
+            for result in results {
+                group.addTask {
+                    try await FlickrAPI.Photos.getInfo(forId: result.id)
+                }
+            }
+            return try await group
+                .reduce(into: []) { $0.append($1) }
+                .map { Photo(from: $0) }
         }
-        return photos.map { Photo(from: $0) }
     }
 }

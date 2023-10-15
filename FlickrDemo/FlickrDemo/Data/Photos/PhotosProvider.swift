@@ -2,13 +2,19 @@ import FlickrAPI
 import Foundation
 
 protocol PhotosProviding {
-    func search(_ query: String) async throws -> [Photo]
+    func freeTextSearch(_ query: String) async throws -> [Photo]
+    func tagSearch(_ tags: [String]) async throws -> [Photo]
     func forUserId(_ id: String) async throws -> [Photo]
 }
 
 struct PhotosProvider: PhotosProviding {
-    func search(_ query: String) async throws -> [Photo] {
-        let stubs = try await FlickrAPI.Photos.search(query)
+    func freeTextSearch(_ query: String) async throws -> [Photo] {
+        let stubs = try await FlickrAPI.Photos.search(.text(query))
+        return try await inflateStubs(stubs)
+    }
+    
+    func tagSearch(_ tags: [String]) async throws -> [Photo] {
+        let stubs = try await FlickrAPI.Photos.search(.tags(tags))
         return try await inflateStubs(stubs)
     }
     

@@ -16,7 +16,7 @@ final class SearchTests: XCTestCase {
     
     func testNetworkResourceIsLoadedWhenDataFetchSucceeds() {
         let successfulResponse: [Photo] = [.sample(id: "1"), .sample(id: "2"), .sample(id: "3")]
-        let mockPhotoProvider = MockPhotoProvider(search: { successfulResponse })
+        let mockPhotoProvider = MockPhotoProvider(freeTextSearch: { successfulResponse })
         let viewModel = SearchViewModel(photosProvider: mockPhotoProvider)
         let expectation = XCTestExpectation(description: "Search completed.")
         
@@ -32,7 +32,7 @@ final class SearchTests: XCTestCase {
     
     func testNetworkResourceIsFailedWhenDataFetchFails() {
         let mockError = MockError.oops
-        let mockPhotoProvider = MockPhotoProvider(search: { throw mockError })
+        let mockPhotoProvider = MockPhotoProvider(freeTextSearch: { throw mockError })
         let viewModel = SearchViewModel(photosProvider: mockPhotoProvider)
         let expectation = XCTestExpectation(description: "Search completed.")
         

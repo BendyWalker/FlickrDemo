@@ -39,7 +39,7 @@ struct SearchView: View {
 #Preview("Data") {
     NavigationStack {
         SearchView(viewModel: SearchViewModel(
-            photosProvider: MockPhotoProvider(search: {
+            photosProvider: MockPhotoProvider(freeTextSearch: {
                 (0 ... 50).map { _ in Photo.sample() }
             })))
     }
@@ -48,7 +48,7 @@ struct SearchView: View {
 #Preview("No Data") {
     NavigationStack {
         SearchView(viewModel: SearchViewModel(
-            photosProvider: MockPhotoProvider(search: {
+            photosProvider: MockPhotoProvider(freeTextSearch: {
                 [Photo]()
             })))
     }
@@ -57,7 +57,7 @@ struct SearchView: View {
 #Preview("Error") {
     NavigationStack {
         SearchView(viewModel: SearchViewModel(
-            photosProvider: MockPhotoProvider(search: {
+            photosProvider: MockPhotoProvider(freeTextSearch: {
                 throw MockError.oops
             })))
     }

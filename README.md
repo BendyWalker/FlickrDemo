@@ -24,3 +24,6 @@ Here's a broad list of the order I went about things along with any observations
 	* Modified PhotosProvider to add additional `forUserId()` function, drying up photo 'inflation' in the process.
 	* Extracted PhotoList, using it in both SearchView and UserPhotosView.
 	* Validated changes with additional unit tests.
+8. Added TaggedPhotosView to display recent photos for a specific tag.
+	* Followed patterns similar to the above.
+	* Extended `FlickrAPI.Photos.search()` to take a `Search` enum to perform either a free text or tag-based search.

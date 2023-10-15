@@ -48,10 +48,10 @@ struct PhotoDetailView: View {
                 ScrollView(.horizontal) {
                     LazyHStack {
                         ForEach(tags, id: \.self) { tag in
-                            Button(action: {}, label: {
+                            NavigationLink(value: Path.taggedPhotos(tag: tag)) {
                                 Text(tag)
                                     .italic()
-                            })
+                            }
                             .buttonStyle(.bordered)
                         }
                     }

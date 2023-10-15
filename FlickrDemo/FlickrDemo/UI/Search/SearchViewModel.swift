@@ -20,7 +20,7 @@ import SwiftUI
             searchTask = Task {
                 try await Task.sleep(for: .seconds(0.5))
                 do {
-                    let response = try await photosProvider.search(query)
+                    let response = try await photosProvider.freeTextSearch(query)
                     photos = .loaded(response)
                 } catch {
                     photos = .failed(error)

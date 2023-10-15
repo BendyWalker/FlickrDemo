@@ -1,7 +1,6 @@
-# Flickr Demo Notes
+# Flickr Demo
 
-Here's a broad list of the order I went about things along with any observations I made:
-
+I timeboxed working on this to around 10 hours. I opted for a lightweight MVVM architecture and use of local packages to scope code appropriately. Here's a list of how I went about things along with any observations or interesting choices I made along the way:
 1. Created a local Swift package, FlickrAPI, in which I defined the endpoints, models and public functions to access the data I believed would be required to populate the app.
 	* Mapped out the endpoints in Paw (similar to Postman) first to test and validate I was getting correct responses.
 	* Added some lightweight tests to ensure that the JSON responses decode into my models correctly.

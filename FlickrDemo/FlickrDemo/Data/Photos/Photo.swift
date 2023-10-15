@@ -10,15 +10,17 @@ struct Photo: Identifiable, Equatable {
     let owner: Person?
     let tags: [String]?
 
-    static let sample = Photo(
-        id: "1",
-        url: URL(string: "https://picsum.photos/200/300")!,
-        title: "Example Photo",
-        description: "An example photo with all fields filled.",
-        takenOn: .now,
-        owner: .sample,
-        tags: ["tag1", "tag2"]
-    )
+    static func sample(id: String = UUID().uuidString) -> Photo {
+        Photo(
+            id: id,
+            url: URL(string: "https://picsum.photos/200/300")!,
+            title: "Example Photo",
+            description: "An example photo with all fields filled.",
+            takenOn: .now,
+            owner: .sample(),
+            tags: (1 ... 15).map { "tag\($0)" }
+        )
+    }
 }
 
 extension Photo {
@@ -38,11 +40,13 @@ struct Person: Identifiable, Equatable {
     let username: String
     let buddyIconUrl: URL
 
-    static let sample = Person(
-        id: "1",
-        username: "testuser",
-        buddyIconUrl: URL(string: "https://picsum.photos/200/300)")!
-    )
+    static func sample(id: String = UUID().uuidString) -> Person {
+        Person(
+            id: id,
+            username: "testuser",
+            buddyIconUrl: URL(string: "https://picsum.photos/200/300)")!
+        )
+    }
 }
 
 extension Person {

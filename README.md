@@ -13,3 +13,7 @@ Here's a broad list of the order I went about things along with any observations
 	* Made a PhotosProviding protocol so I could mock out PhotosProvider's response and unit test the search function in RootViewModel.
 4. Built out a basic RootView to validate that the ViewModel was providing data correctly.
 	* Rewrote `PhotosProvider.search()` to run `getInfo` calls in parallel, massively speeding up response time.
+5. Renamed RootView and related classes to SearchView, and built out the UI for the search screen.
+	* Opted to overlay the username and tags on top of each image to maximise display of the primary content.
+	* Used the MockPhotosProvider from the unit tests to display sample data in SwiftUI previews.
+	* Switched on NetworkResource to easily handle loading, loaded and failed states.

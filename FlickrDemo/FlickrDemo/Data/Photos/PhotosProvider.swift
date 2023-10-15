@@ -1,6 +1,10 @@
 import FlickrAPI
 import Foundation
 
+protocol PhotosProviding {
+    func search(_ query: String) async throws -> [Photo]
+}
+
 struct PhotosProvider: PhotosProviding {
     func search(_ query: String) async throws -> [Photo] {
         try await withThrowingTaskGroup(of: FlickrAPI.Photo.self) { group in

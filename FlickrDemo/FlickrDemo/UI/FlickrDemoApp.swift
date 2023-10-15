@@ -2,6 +2,7 @@ import SwiftUI
 
 enum Path: Hashable {
     case photoDetails(photo: Photo)
+    case userPhotos(user: Person)
 }
 
 @main
@@ -12,6 +13,14 @@ struct FlickrDemoApp: App {
         WindowGroup {
             NavigationStack(path: $path) {
                 SearchView()
+                    .navigationDestination(for: Path.self) { path in
+                        switch path {
+                        case .photoDetails(let photo):
+                            PhotoDetailView(photo: photo)
+                        case .userPhotos(let user):
+                            UserPhotosView(user: user)
+                        }
+                    }
             }
         }
     }

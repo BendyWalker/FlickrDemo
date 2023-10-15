@@ -23,7 +23,8 @@ let package = Package(
             dependencies: ["FlickrAPI"],
             resources: [
                 .process("Mocks/photosSearch.json"),
-                .process("Mocks/photosGetInfo.json")
+                .process("Mocks/photosGetInfo.json"),
+                .process("Mocks/peopleGetPublicPhotos.json")
             ]
         )
     ]

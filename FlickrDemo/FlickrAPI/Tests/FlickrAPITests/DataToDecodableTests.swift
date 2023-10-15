@@ -1,5 +1,5 @@
-import XCTest
 @testable import FlickrAPI
+import XCTest
 
 func convertMock(named name: String) -> Data {
     guard let fileUrl = Bundle.module.url(forResource: name, withExtension: "json") else {
@@ -29,5 +29,13 @@ final class DataToDecodableTests: XCTestCase {
         let photo = decodedData.photo
         
         XCTAssertEqual(photo.id, "53254719161")
+    }
+    
+    func testPeopleGetPublicPhotos() throws {
+        let data = convertMock(named: "peopleGetPublicPhotos")
+        let decodedData = try JSONDecoder.FlickrAPI.decode(PhotoSearchResponse.self, from: data)
+        let photos = decodedData.photos.list
+        
+        XCTAssertTrue(photos.allSatisfy { $0.owner == "47766432@N03" })
     }
 }

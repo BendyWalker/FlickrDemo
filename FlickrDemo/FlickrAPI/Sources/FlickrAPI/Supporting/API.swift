@@ -12,5 +12,11 @@ enum API {
             
             var category: String { "photos" }
         }
+        
+        enum People: String, EndpointCategory {
+            case publicPhotos = "getPublicPhotos"
+            
+            var category: String { "people" }
+        }
     }
 }

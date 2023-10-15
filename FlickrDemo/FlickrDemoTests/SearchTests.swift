@@ -2,12 +2,12 @@ import XCTest
 
 final class SearchTests: XCTestCase {
     func testNetworkResourceIsLoadingWhenFirstCreated() {
-        let viewModel = SearchViewModel(photosProvider: MockPhotoProvider(search: { [] }))
+        let viewModel = SearchViewModel(photosProvider: MockPhotoProvider())
         XCTAssertEqual(viewModel.photos, .loading)
     }
     
     func testNetworkResourceIsLoadedWhenSearchQueryIsEmpty() {
-        let viewModel = SearchViewModel(photosProvider: MockPhotoProvider(search: { [] }))
+        let viewModel = SearchViewModel(photosProvider: MockPhotoProvider())
         
         viewModel.search("")
         
@@ -16,7 +16,7 @@ final class SearchTests: XCTestCase {
     
     func testNetworkResourceIsLoadedWhenDataFetchSucceeds() {
         let successfulResponse: [Photo] = [.sample(id: "1"), .sample(id: "2"), .sample(id: "3")]
-        let mockPhotoProvider = MockPhotoProvider { successfulResponse }
+        let mockPhotoProvider = MockPhotoProvider(search: { successfulResponse })
         let viewModel = SearchViewModel(photosProvider: mockPhotoProvider)
         let expectation = XCTestExpectation(description: "Search completed.")
         
@@ -32,7 +32,7 @@ final class SearchTests: XCTestCase {
     
     func testNetworkResourceIsFailedWhenDataFetchFails() {
         let mockError = MockError.oops
-        let mockPhotoProvider = MockPhotoProvider { throw mockError }
+        let mockPhotoProvider = MockPhotoProvider(search: { throw mockError })
         let viewModel = SearchViewModel(photosProvider: mockPhotoProvider)
         let expectation = XCTestExpectation(description: "Search completed.")
         

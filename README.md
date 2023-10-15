@@ -19,3 +19,8 @@ Here's a broad list of the order I went about things along with any observations
 	* Switched on NetworkResource to easily handle loading, loaded and failed states.
 6. Built out PhotoDetailView, presented when tapping a search result to display additional information, with inert buttons to navigate to user and tagged photos.
 	* Added a `path` state to the root of the app to allow navigation between screens.
+7. Added UserPhotosView to display all public photos for a specific user.
+	* Modified FlickrAPI to add new endpoint.
+	* Modified PhotosProvider to add additional `forUserId()` function, drying up photo 'inflation' in the process.
+	* Extracted PhotoList, using it in both SearchView and UserPhotosView.
+	* Validated changes with additional unit tests.

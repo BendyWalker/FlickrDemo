@@ -5,6 +5,7 @@ public struct PhotoSearchResult: Decodable, Identifiable, PhotoUrlConstructable 
     public let id: String
     public let server: String
     public let secret: String
+    public let owner: String
 }
 
 struct PhotoSearchResponse: Decodable {

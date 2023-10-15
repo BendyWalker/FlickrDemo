@@ -29,7 +29,7 @@ struct PhotoDetailView: View {
                         Text(takenOn.formatted(.dateTime.day().month().year().hour().minute()))
                     }
                     if let owner = photo.owner {
-                        Button(action: {}, label: {
+                        NavigationLink(value: Path.userPhotos(user: owner)) {
                             HStack {
                                 (Text("See more by ") + Text(owner.username).fontWeight(.semibold))
                                     .multilineTextAlignment(.leading)
@@ -37,28 +37,27 @@ struct PhotoDetailView: View {
                                 Image(systemName: "chevron.right")
                             }
                             .frame(maxWidth: .infinity, minHeight: 44)
-                        })
+                        }
                         .buttonStyle(.borderedProminent)
                     }
                 }
                 .padding(.horizontal)
+            }
 
-                if let tags = photo.tags {
-                    ScrollView(.horizontal) {
-                        LazyHStack {
-                            ForEach(tags, id: \.self) { tag in
-                                Button(action: {}, label: {
-                                    Text(tag)
-                                        .italic()
-                                })
-                                .buttonStyle(.bordered)
-                            }
+            if let tags = photo.tags {
+                ScrollView(.horizontal) {
+                    LazyHStack {
+                        ForEach(tags, id: \.self) { tag in
+                            Button(action: {}, label: {
+                                Text(tag)
+                                    .italic()
+                            })
+                            .buttonStyle(.bordered)
                         }
                     }
-                    .safeAreaPadding()
                 }
+                .safeAreaPadding()
             }
-            Spacer()
         }
         .navigationBarTitleDisplayMode(.inline)
     }

@@ -27,3 +27,7 @@ Here's a broad list of the order I went about things along with any observations
 8. Added TaggedPhotosView to display recent photos for a specific tag.
 	* Followed patterns similar to the above.
 	* Extended `FlickrAPI.Photos.search()` to take a `Search` enum to perform either a free text or tag-based search.
+9. Allowed search to be scoped to tags-only.
+	* Took advantage of `.searchable(editableTokens:)` to tokenise tags in the UI.
+	* Leveraged previous changes to `FlickrAPI.Photos.search()`.
+	* Added additional unit tests to validate scope change calls correct PhotosProvider function.

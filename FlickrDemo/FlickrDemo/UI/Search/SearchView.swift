@@ -3,8 +3,7 @@ import SwiftUI
 struct SearchView: View {
     @State var viewModel = SearchViewModel()
 
-    @State private var shouldInitiallyFetch = true
-    @State private var searchQuery = "Yorkshire"
+    @State private var hasInitiallyFetched = false
 
     var body: some View {
         ZStack {
@@ -28,10 +27,31 @@ struct SearchView: View {
             }
         }
         .navigationTitle("FlickrDemo")
-        .searchable(text: $searchQuery)
-        .onChange(of: searchQuery, initial: shouldInitiallyFetch) {
-            shouldInitiallyFetch = false
-            viewModel.search(searchQuery)
+        .searchable(text: $viewModel.query, editableTokens: $viewModel.tags) { token in
+            Text(token.wrappedValue.name)
+        }
+        .searchScopes($viewModel.scope, activation: .onSearchPresentation, {
+            ForEach(SearchScope.allCases, id: \.self) {
+                Text($0.rawValue).tag($0)
+            }
+        })
+        .onSubmit(of: .search) {
+            viewModel.search()
+        }
+        .onChange(of: viewModel.query) {
+            if viewModel.scope == .tags {
+                viewModel.tokenise()
+            }
+        }
+        .onChange(of: viewModel.scope) {
+            viewModel.query.removeAll()
+            viewModel.tags.removeAll()
+        }
+        .task {
+            if !hasInitiallyFetched {
+                viewModel.search()
+                hasInitiallyFetched = true
+            }
         }
     }
 }

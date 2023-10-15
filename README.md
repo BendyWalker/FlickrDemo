@@ -17,3 +17,5 @@ Here's a broad list of the order I went about things along with any observations
 	* Opted to overlay the username and tags on top of each image to maximise display of the primary content.
 	* Used the MockPhotosProvider from the unit tests to display sample data in SwiftUI previews.
 	* Switched on NetworkResource to easily handle loading, loaded and failed states.
+6. Built out PhotoDetailView, presented when tapping a search result to display additional information, with inert buttons to navigate to user and tagged photos.
+	* Added a `path` state to the root of the app to allow navigation between screens.

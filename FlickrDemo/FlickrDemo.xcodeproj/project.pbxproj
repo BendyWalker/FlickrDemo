@@ -26,6 +26,7 @@
 		1B56D9322AD93A8B00F90A10 /* FlickrDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B56D9312AD93A8B00F90A10 /* FlickrDemoUITests.swift */; };
 		1BBED77D2ADC172C0065C898 /* PhotosProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B23C2EE2AD97D8E001224CE /* PhotosProvider.swift */; };
 		1BBED77F2ADC1E2E0065C898 /* CroppedModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BBED77E2ADC1E2E0065C898 /* CroppedModifier.swift */; };
+		1BBED7832ADC2FA70065C898 /* PhotoDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BBED7822ADC2FA70065C898 /* PhotoDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		1B56D9312AD93A8B00F90A10 /* FlickrDemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickrDemoUITests.swift; sourceTree = "<group>"; };
 		1B56D9402AD93B6300F90A10 /* FlickrAPI */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = FlickrAPI; sourceTree = "<group>"; };
 		1BBED77E2ADC1E2E0065C898 /* CroppedModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CroppedModifier.swift; sourceTree = "<group>"; };
+		1BBED7822ADC2FA70065C898 /* PhotoDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +107,7 @@
 			children = (
 				1B56D9152AD93A8A00F90A10 /* FlickrDemoApp.swift */,
 				1B23C2F02AD97D9B001224CE /* Search */,
+				1BBED7822ADC2FA70065C898 /* PhotoDetailView.swift */,
 				1B56D9192AD93A8B00F90A10 /* Assets.xcassets */,
 			);
 			path = UI;
@@ -342,6 +345,7 @@
 				1BBED77F2ADC1E2E0065C898 /* CroppedModifier.swift in Sources */,
 				1B4DF7302ADAB80B005DED88 /* NetworkResource.swift in Sources */,
 				1B4DF73E2ADC1165005DED88 /* MockError.swift in Sources */,
+				1BBED7832ADC2FA70065C898 /* PhotoDetailView.swift in Sources */,
 				1B56D9162AD93A8A00F90A10 /* FlickrDemoApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

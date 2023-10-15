@@ -1,7 +1,7 @@
 import FlickrAPI
 import Foundation
 
-struct Photo: Identifiable, Equatable {
+struct Photo: Identifiable, Equatable, Hashable {
     let id: String
     let url: URL
     let title: String?
@@ -35,7 +35,7 @@ extension Photo {
     }
 }
 
-struct Person: Identifiable, Equatable {
+struct Person: Identifiable, Equatable, Hashable {
     let id: String
     let username: String
     let buddyIconUrl: URL

@@ -3,46 +3,57 @@ import SwiftUI
 struct SearchView: View {
     @State var viewModel = SearchViewModel()
 
+    @State private var shouldInitiallyFetch = true
     @State private var searchQuery = "Yorkshire"
 
     var body: some View {
-        NavigationStack {
-            ZStack {
-                switch viewModel.photos {
-                case .loading:
-                    ProgressView()
-                case .loaded(let photos):
-                    if photos.isEmpty {
-                        ContentUnavailableView(
-                            "Start Typing",
-                            systemImage: "magnifyingglass",
-                            description: Text("Start typing to search for cool photos!")
-                        )
-                    } else {
-                        List(photos) {
-                            SearchResultView(
-                                photoUrl: $0.url,
-                                ownerUsername: $0.owner?.username,
-                                ownerBuddyIconUrl: $0.owner?.buddyIconUrl,
-                                photoTags: $0.tags
-                            )
-                            .listRowSeparator(.hidden)
-                        }
-                        .listStyle(.plain)
-                    }
-                case .failed:
+        ZStack {
+            switch viewModel.photos {
+            case .loading:
+                ProgressView()
+            case .loaded(let photos):
+                if photos.isEmpty {
                     ContentUnavailableView(
-                        "No Images Found",
-                        systemImage: "camera.on.rectangle.fill",
-                        description: Text("Check the spelling in your search term or try something else.")
+                        "Start Typing",
+                        systemImage: "magnifyingglass",
+                        description: Text("Start typing to search for cool photos!")
                     )
+                } else {
+                    List(photos) { photo in
+                        ZStack {
+                            NavigationLink(value: Path.photoDetails(photo: photo)) {
+                                EmptyView()
+                            }
+                            SearchResultView(
+                                photoUrl: photo.url,
+                                ownerUsername: photo.owner?.username,
+                                ownerBuddyIconUrl: photo.owner?.buddyIconUrl,
+                                photoTags: photo.tags
+                            )
+                        }
+                        .listRowSeparator(.hidden)
+                    }
+                    .listStyle(.plain)
                 }
+            case .failed:
+                ContentUnavailableView(
+                    "No Images Found",
+                    systemImage: "camera.on.rectangle.fill",
+                    description: Text("Check the spelling in your search term or try something else.")
+                )
             }
-            .navigationTitle("FlickrDemo")
-            .searchable(text: $searchQuery)
-            .onChange(of: searchQuery, initial: true) {
-                viewModel.search(searchQuery)
+        }
+        .navigationTitle("FlickrDemo")
+        .navigationDestination(for: Path.self, destination: { path in
+            switch path {
+            case .photoDetails(let photo):
+                PhotoDetailView(photo: photo)
             }
+        })
+        .searchable(text: $searchQuery)
+        .onChange(of: searchQuery, initial: shouldInitiallyFetch) {
+            shouldInitiallyFetch = false
+            viewModel.search(searchQuery)
         }
     }
 }
@@ -139,22 +150,31 @@ private struct ChipViewModifier: ViewModifier {
 }
 
 #Preview("Data") {
-    let mockViewModel = SearchViewModel(photosProvider: MockPhotoProvider {
-        (0 ... 50).map { _ in Photo.sample() }
-    })
-    return SearchView(viewModel: mockViewModel)
+    NavigationStack {
+        SearchView(viewModel: SearchViewModel(
+            photosProvider: MockPhotoProvider {
+                (0 ... 50).map { _ in Photo.sample() }
+            })
+        )
+    }
 }
 
 #Preview("No Data") {
-    let mockViewModel = SearchViewModel(photosProvider: MockPhotoProvider {
-        [Photo]()
-    })
-    return SearchView(viewModel: mockViewModel)
+    NavigationStack {
+        SearchView(viewModel: SearchViewModel(
+            photosProvider: MockPhotoProvider {
+                [Photo]()
+            })
+        )
+    }
 }
 
 #Preview("Error") {
-    let mockViewModel = SearchViewModel(photosProvider: MockPhotoProvider {
-        throw MockError.oops
-    })
-    return SearchView(viewModel: mockViewModel)
+    NavigationStack {
+        SearchView(viewModel: SearchViewModel(
+            photosProvider: MockPhotoProvider {
+                throw MockError.oops
+            })
+        )
+    }
 }
